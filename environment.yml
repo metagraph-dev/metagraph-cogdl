@@ -1,0 +1,12 @@
+name: mgcogdl
+
+dependencies:
+  - python=3.7
+  - coverage
+  - pytest
+  - pytest-cov
+  - black
+  - conda-forge::pre-commit
+  - setuptools
+  - metagraph::metagraph
+  - pip
