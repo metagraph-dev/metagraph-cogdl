@@ -1,0 +1,10 @@
+name: mg
+
+dependencies:
+  - python=3.8
+  - coverage
+  - pytest
+  - pytest-cov
+  - black
+  - setuptools
+  - metagraph::metagraph
