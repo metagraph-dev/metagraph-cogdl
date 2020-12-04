@@ -1,5 +1,5 @@
 package:
-   name: metagraph_cogdl
+   name: metagraph-cogdl
    version: {{ environ.get('GIT_DESCRIBE_TAG', 'unknown') }}
 
 source:
@@ -17,7 +17,7 @@ requirements:
   run:
     - python >=3.7
     - cogdl
-    - metagraph
+    - metagraph >=0.2.3
 
 test:
   requires:
