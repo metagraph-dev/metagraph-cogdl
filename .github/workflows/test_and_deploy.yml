@@ -31,7 +31,7 @@ jobs:
           conda install -q conda-build
           conda env create -f continuous_integration/environment-${{ env.MAIN_PYVER }}.yml
           conda activate mg
-          pip install -e .
+          echo 'TODO: pip install -e .'
       - name: Lint with Black
         run: |
           source "$CONDA/etc/profile.d/conda.sh"
@@ -96,11 +96,11 @@ jobs:
           conda list
       - name: Pytest
         # TODO: add `pytest --pyargs metagraph_cogdl` once tests exist
+        # python -c 'import cogdl'
+        # python -c 'import metagraph_cogdl.plugins; assert metagraph_cogdl.plugins.has_cogdl'
         run: |
           source "$CONDA/etc/profile.d/conda.sh"
           conda activate mg
-          python -c 'import cogdl'
-          python -c 'import metagraph_cogdl.plugins; assert metagraph_cogdl.plugins.has_cogdl'
           python -m metagraph.tests
           python -m metagraph.tests --dask
 
