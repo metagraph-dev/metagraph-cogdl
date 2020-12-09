@@ -31,7 +31,10 @@ jobs:
           conda install -q conda-build
           conda env create -f continuous_integration/environment-${{ env.MAIN_PYVER }}.yml
           conda activate mg
-          echo 'TODO: pip install -e .'
+          # TODO: remove this once a proper cogdl conda package is available
+          conda install -c pytorch -c defaults pytorch
+          pip install cogdl
+          pip install -e .
       - name: Lint with Black
         run: |
           source "$CONDA/etc/profile.d/conda.sh"
@@ -88,7 +91,7 @@ jobs:
           conda create -n mg python=${{ matrix.pyver }} pytest coverage pytest-cov
           conda activate mg
           # TODO: remove this once a proper cogdl conda package is available
-          conda install -c pytorch -c defaults pytorch pip
+          conda install -c pytorch -c defaults pytorch
           pip install cogdl
           # Install built_package
           BUILT_PKG=`ls ./artifact_storage | head -1`

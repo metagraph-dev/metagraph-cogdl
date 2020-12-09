@@ -22,7 +22,7 @@ jobs:
           conda create -n mg python=${{ env.PYVER }} pytest coverage pytest-cov
           conda activate mg
           # TODO: remove this once a proper cogdl conda package is available
-          conda install -c pytorch -c defaults pytorch pip
+          conda install -c pytorch -c defaults pytorch
           pip install cogdl
           # Install package using latest "dev" versions from metagraph channel
           conda install -c ${{ env.CHANNELS }} metagraph-cogdl
