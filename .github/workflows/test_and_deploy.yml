@@ -90,15 +90,16 @@ jobs:
           conda update -q conda
           conda create -n mg python=${{ matrix.pyver }} pytest coverage pytest-cov
           conda activate mg
-          # TODO: remove this once a proper cogdl conda package is available
-          conda install -c pytorch -c defaults pytorch
-          pip install cogdl
           # Install built_package
           BUILT_PKG=`ls ./artifact_storage | head -1`
           conda install ./artifact_storage/$BUILT_PKG
           # Install dependencies listed in built package
           # (This is a workaround because conda does not install dependencies for local file installs)
           conda update -c ${{ env.CHANNELS }} metagraph-cogdl
+          conda list
+          # TODO: remove this once a proper cogdl conda package is available
+          conda install -c pytorch -c defaults pytorch
+          pip install cogdl
           conda list
       - name: Pytest
         run: |
