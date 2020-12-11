@@ -1,0 +1,33 @@
+package:
+   name: metagraph-cogdl
+   version: {{ environ.get('GIT_DESCRIBE_TAG', 'unknown') }}
+
+source:
+   path: ../..
+
+build:
+  number: {{ environ.get('GIT_DESCRIBE_NUMBER', 0)|int }}
+  string: {{GIT_DESCRIBE_HASH}}_{{ GIT_DESCRIBE_NUMBER }}
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+  noarch: python
+
+requirements:
+  build:
+    - python >=3.7
+  run:
+    - python >=3.7
+    - metagraph >=0.2.3
+
+test:
+  requires:
+    - pytest
+    - pytest-cov
+    - coverage
+  commands:
+    - py.test --cov-report term-missing --cov=metagraph_cogdl --pyargs metagraph.tests
+
+about:
+  home: https://github.com/metagraph-dev/metagraph-cogdl
+  license: Apache2
+  license_file: LICENSE
+  summary: Metagraph plugin for cogdl
