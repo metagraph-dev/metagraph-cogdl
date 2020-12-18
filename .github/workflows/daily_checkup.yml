@@ -24,9 +24,6 @@ jobs:
           # Install package using latest "dev" versions from metagraph channel
           conda install -c ${{ env.CHANNELS }} metagraph-cogdl
           conda list
-          # TODO: remove this once a proper cogdl conda package is available
-          conda install -c pytorch -c defaults -c conda-forge pytorch 'dataclasses>=0.7'
-          conda list
       - name: Pytest
         run: |
           source "$CONDA/etc/profile.d/conda.sh"
