@@ -87,10 +87,17 @@ jobs:
           conda update -q conda
           conda create -n mg python=${{ matrix.pyver }} pytest coverage pytest-cov
           conda activate mg
-          # Install built_package
+          conda install -c ${{ env.CHANNELS }} metagraph
+          # Install built_package and dependencies
+          # This feels overly complex, but it's the best solution I've found to install
+          # the dependencies of a local package divorced from its local build directory
           BUILT_PKG=`ls ./artifact_storage | head -1`
+          conda index ./artifact_storage
+          mv ./artifact_storage/$BUILT_PKG ./artifact_storage/noarch/
+          conda index ./artifact_storage
           echo "Installing $BUILT_PKG"
-          conda install --update-deps ./artifact_storage/$BUILT_PKG
+          # Use the local index and specifically exclude metagraph/label/dev to avoid grabbing a stale build
+          conda install -c ./artifact_storage -c defaults -c conda-forge metagraph-cogdl
           conda list
       - name: Pytest
         run: |

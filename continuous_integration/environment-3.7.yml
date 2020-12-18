@@ -14,4 +14,4 @@ dependencies:
 
 # metagraph-cogdl dependencies
   - cogdl
-  - metagraph >=0.2.3
+  - metagraph >=0.2.4
