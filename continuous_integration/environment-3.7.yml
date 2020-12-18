@@ -11,4 +11,7 @@ dependencies:
   - pytest-cov
   - black >=20.8b1
   - setuptools
-  - metagraph >=0.2.3
+
+# metagraph-cogdl dependencies
+  - cogdl
+  - metagraph >=0.2.4

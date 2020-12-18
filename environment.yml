@@ -8,5 +8,6 @@ dependencies:
   - black
   - conda-forge::pre-commit
   - setuptools
+  - conda-forge::cogdl
   - metagraph::metagraph
   - pip
