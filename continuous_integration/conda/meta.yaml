@@ -16,7 +16,8 @@ requirements:
     - python >=3.7
   run:
     - python >=3.7
-    - metagraph >=0.2.3
+    - cogdl
+    - metagraph >=0.2.4
 
 test:
   requires:
