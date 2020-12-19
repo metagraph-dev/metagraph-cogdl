@@ -85,9 +85,9 @@ jobs:
           source "$CONDA/etc/profile.d/conda.sh"
           conda config --set always_yes yes --set changeps1 no
           conda update -q conda
-          conda create -n mg python=${{ matrix.pyver }} pytest coverage pytest-cov
+          conda create -n mg python=${{ matrix.pyver }} pytest coverage pytest-cov conda-build
           conda activate mg
-          conda install -c ${{ env.CHANNELS }} metagraph
+          conda install -c ${{ env.CHANNELS }} 'metagraph>=0.2.4'
           # Install built_package and dependencies
           # This feels overly complex, but it's the best solution I've found to install
           # the dependencies of a local package divorced from its local build directory
