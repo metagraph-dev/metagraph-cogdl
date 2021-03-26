@@ -87,7 +87,7 @@ jobs:
       - name: Update env
         run: |
           conda install -q conda-build
-          conda install -c ${{ env.CHANNELS }} metagraph-dev
+          conda install -c ${{ env.CHANNELS }} 'metagraph-dev>=0.2.5'
           # Install built_package and dependencies
           # This feels overly complex, but it's the best solution I've found to install
           # the dependencies of a local package divorced from its local build directory
