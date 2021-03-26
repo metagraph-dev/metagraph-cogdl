@@ -86,6 +86,7 @@ jobs:
           python-version: ${{ matrix.pyver }}
       - name: Update env
         run: |
+          conda install -q conda-build
           conda install -c ${{ env.CHANNELS }} metagraph-dev
           # Install built_package and dependencies
           # This feels overly complex, but it's the best solution I've found to install
